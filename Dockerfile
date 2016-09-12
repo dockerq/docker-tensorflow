@@ -23,7 +23,8 @@ RUN pip --no-cache-dir install \
     scikit-learn \
     matplotlib \
     numpy \
-    scipy && \
+    scipy \
+    cassandra-driver && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
