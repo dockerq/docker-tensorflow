@@ -13,3 +13,17 @@ docker run -p 8888:8888 -p 6006:6006 adolphlwq/docker-tensorflow:python3
 ```
 - browser
 browser `localhost:8888` or `your_host_ip:8888` to end jupyter online editor
+
+## Custom: Docker Options
+- set password to Jupyter Notebook
+```
+docker run -p 8888:8888 -p 6006:6006 -e PASSWORD="YOURPASS" adolphlwq/docker-tensorflow:python3
+```
+- gives the container user:jovyan passwordless sudo capability
+```
+docker run -p 8888:8888 -p 6006:6006 -e GRANT_SUDO=yes adolphlwq/docker-tensorflow:python3
+```
+- mount volume mapping from host to container
+```
+docker run -p 8888:8888 -p 6006:6006 -v pathto/host/folder:/home/jovyan/work adolphlwq/docker-tensorflow:python3
+```
