@@ -11,8 +11,7 @@ A tensorflow docker image intergated jupyter
 ```
 docker run -p 8888:8888 -p 6006:6006 adolphlwq/docker-tensorflow:python3
 ```
-- browser
-browser `localhost:8888` or `your_host_ip:8888` to end jupyter online editor
+- browser `localhost:8888` or `your_host_ip:8888` to see jupyter online editor
 
 ## Custom: Docker Options
 - set password to Jupyter Notebook
