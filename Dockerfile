@@ -61,7 +61,7 @@ RUN chown -R $NB_USER:users /home/$NB_USER/.jupyter && \
     chmod +x /usr/local/bin/*.sh
 
 # download tf 3.5 v1.0.0
-RUN pip3 install tensorflow==$TF_VERSION
+RUN pip install tensorflow==$TF_VERSION
 # RUN pip --no-cache-dir install \
 #     https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.10.0-cp35-cp35m-linux_x86_64.whl
 
