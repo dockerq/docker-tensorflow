@@ -18,7 +18,9 @@ RUN wget --quiet https://github.com/krallin/tini/releases/download/v0.9.0/tini &
 ENV CONDA_DIR='/opt/conda' \
     SHELL='/bin/bash' \
     NB_USER='geek' \
-    NB_UID='1000'
+    NB_UID='1000' \
+    TF_VERSION='1.0.0'
+
 ENV PATH=$CONDA_DIR/bin:$PATH \
     HOME=/home/$NB_USER
 
@@ -42,7 +44,8 @@ RUN cd /tmp && \
     $CONDA_DIR/bin/conda install --quiet --yes conda==3.19.1 && \
     $CONDA_DIR/bin/conda config --system --add channels conda-forge && \
     conda clean -tipsy && \
-    echo "jpeg 8*" >> /opt/conda/conda-meta/pinned && \ #https://github.com/jupyter/docker-stacks/issues/210
+    echo "jpeg 8*" >> /opt/conda/conda-meta/pinned && \ 
+    #https://github.com/jupyter/docker-stacks/issues/210
     conda install --quiet --yes \
     'notebook=4.2*' \
     && conda clean -tipsy
@@ -51,24 +54,25 @@ USER root
 WORKDIR /home/$NB_USER/work
 ENTRYPOINT ["tini", "--"]
 CMD ["start-notebook.sh"]
-COPY start-notebook.sh /usr/local/bin/
-COPY start-singleuser.sh /usr/local/bin/
-COPY jupyter_notebook_config.py /home/$NB_USER/.jupyter/
+COPY files/start-notebook.sh /usr/local/bin/
+COPY files/start-singleuser.sh /usr/local/bin/
+COPY files/jupyter_notebook_config.py /home/$NB_USER/.jupyter/
 RUN chown -R $NB_USER:users /home/$NB_USER/.jupyter && \
     chmod +x /usr/local/bin/*.sh
 
-# download tf 3.5
-RUN pip --no-cache-dir install \
-    https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.10.0-cp35-cp35m-linux_x86_64.whl
+# download tf 3.5 v1.0.0
+RUN pip3 install tensorflow==$TF_VERSION
+# RUN pip --no-cache-dir install \
+#     https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.10.0-cp35-cp35m-linux_x86_64.whl
 
-# install some sci packages
-RUN pip --no-cache-dir install \
-    pandas \
-    scikit-learn \
-    matplotlib \
-    numpy \
-    scipy && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+# # install some sci packages
+# RUN pip --no-cache-dir install \
+#     pandas \
+#     scikit-learn \
+#     matplotlib \
+#     numpy \
+#     scipy && \
+#     apt-get clean && \
+#     rm -rf /var/lib/apt/lists/*
 
 EXPOSE 6006 8888
