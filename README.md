@@ -19,7 +19,7 @@ tensorflow/tensorflow         latest                   ea40dcc45724        5 day
 ## Usage
 - choose image
     - `adolphlwq/docker-tensorflow:v0.10.0`: tensorflow 0.10.0 version on branch [0.10.0](https://github.com/dockerq/docker-tensorflow/tree/v0.10.0)
-    - `adolphlwq/docker-tensorflow:v1.0.0`: tensorfloe 1.0.0 version on branch [1.0.0](https://github.com/dockerq/docker-tensorflow/tree/v1.0.0)
+    - `adolphlwq/docker-tensorflow:v1.0.0`: tensorflow 1.0.0 version on branch [1.0.0](https://github.com/dockerq/docker-tensorflow/tree/v1.0.0)tensorflow
 - start tensorflow container
 ```
 docker run -p 8888:8888 -p 6006:6006 adolphlwq/docker-tensorflow:v1.0.0
