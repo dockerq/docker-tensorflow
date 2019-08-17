@@ -17,25 +17,29 @@ tensorflow/tensorflow         latest                   ea40dcc45724        5 day
 ```
 
 ## Usage
-- choose image
-    - `adolphlwq/docker-tensorflow:v0.10.0`: tensorflow 0.10.0 version on branch [0.10.0](https://github.com/dockerq/docker-tensorflow/tree/v0.10.0)
-    - `adolphlwq/docker-tensorflow:v1.0.0`: tensorflow 1.0.0 version on branch [1.0.0](https://github.com/dockerq/docker-tensorflow/tree/v1.0.0)tensorflow
-- start tensorflow container
+### choose tag
+pull image with tag which reprensents tensorflow version:
+- v0.10.0: tensorflow 0.10.0 version on branch `0.10.0`
+- v1.0.0: tensorflow 1.0.0 version on branch `1.0.0`
+
+### start container
 ```
 docker run -p 8888:8888 -p 6006:6006 adolphlwq/docker-tensorflow:v1.0.0
 ```
-- browser `localhost:8888` or `your_host_ip:8888` to see jupyter online editor
 
-## Custom: Docker Options
-- set password to Jupyter Notebook
-```
-docker run -p 8888:8888 -p 6006:6006 -e PASSWORD="YOURPASS" adolphlwq/docker-tensorflow:v1.0.0
-```
-- gives the container user:jovyan passwordless sudo capability
-```
-docker run -p 8888:8888 -p 6006:6006 -e GRANT_SUDO=yes adolphlwq/docker-tensorflow:v1.0.0
-```
-- mount volume mapping from host to container
-```
-docker run -p 8888:8888 -p 6006:6006 -v pathto/host/folder:/home/jovyan/work adolphlwq/docker-tensorflow:v1.0.0
-```
+### broswer
+browser `localhost:8888` or `your_host_ip:8888` to see jupyter online editor
+
+## Custom
+1. set password to Jupyter Notebook
+    ```
+    docker run -p 8888:8888 -p 6006:6006 -e PASSWORD="YOURPASS" adolphlwq/docker-tensorflow:v1.0.0
+    ```
+2. gives the container user:jovyan passwordless sudo capability
+    ```
+    docker run -p 8888:8888 -p 6006:6006 -e GRANT_SUDO=yes adolphlwq/docker-tensorflow:v1.0.0
+    ```
+3. mount volume mapping from host to container
+    ```
+    docker run -p 8888:8888 -p 6006:6006 -v pathto/host/folder:/home/jovyan/work adolphlwq/docker-tensorflow:v1.0.0
+    ```

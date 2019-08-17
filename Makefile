@@ -1,3 +1,6 @@
+build:
+	docker build -t adolphlwq/docker-tensorflow:latest .
+
 dev-image:
 		docker build -t adolphlwq/docker-tensorflow:dev-image .
 
